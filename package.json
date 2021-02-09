@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "test": "npm run watch -- --colors --collect-coverage",
+    "test:puppeteer": "node tests/puppeteer.js",
     "test:all": "npm run watch:all -- --colors --collect-coverage",
     "watch": "npx jest --watch",
     "watch:all": "npx jest --watchAll",
