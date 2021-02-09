@@ -1,9 +1,11 @@
 const puppeteer = require('puppeteer');
+const pti = require('puppeteer-to-istanbul');
+
 
 (async () => {
 
   const url    = 'http://127.0.0.1/tests/e2e-testing/src';
-  const config = { 
+  const config = {
     headless : false, // Default: true
     slowMo   : 250,
   };
@@ -12,21 +14,54 @@ const puppeteer = require('puppeteer');
   const page    = await browser.newPage();
 
 
-  page.on('console', (msg) => console.log('console.log:', msg.text()));
+  // Enable JS + CSS coverage
+  await Promise.all([
+    page.coverage.startJSCoverage(),
+    page.coverage.startCSSCoverage()
+  ]);
+
+
+  function onPageRequest(interceptedRequest) {
+    console.log('> Request:', interceptedRequest.url());
+  }
+
+  page.on('request', onPageRequest);
+  page.on('console', (msg) => console.log('> Console:', msg.text()));
+
 
   await page.goto(url);
   await page.evaluate(() => console.log(`URL: ${location.href}`));
 
-  await page.screenshot({ path: 'results/screenshot.png' });
-  
-  
-  /* * /
-  debugger;
 
+  // Type like a user
+  await page.type('#input', 'ABC', {delay: 50});
+
+  const submitButton = await page.$('#submit');
+  await submitButton.focus(); // Just for demo
+  await submitButton.click();
+
+
+  // Use with 'ndb'
+  // debugger;
+  /* * /
   await page.evaluate(() => {
     debugger;
   });
   /* */
+
+  await page.screenshot({ path: 'results/screenshot.png' });
+
+
+  // Disable JS + CSS coverage
+  const [jsCoverage, cssCoverage] = await Promise.all([
+    page.coverage.stopJSCoverage(),
+    page.coverage.stopCSSCoverage(),
+  ]);
+
+  pti.write([...jsCoverage, ...cssCoverage], {
+    includeHostname : false,
+    storagePath     : '.nyc_output',
+  });
 
 
   await browser.close();
