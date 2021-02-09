@@ -3,10 +3,11 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "start:puppeteer": "ndb tests/puppeteer.js",
-    "test:puppeteer": "node tests/puppeteer.js",
-    "coverage:report": "npx nyc report",
-    "project:reset": "rm -rf node_modules"
+    "cypress:open": "cypress open",
+    "cypress:record": "cypress run --record --key 89135ae4-4a5a-4ef8-b83c-a9eb01275ccb",
+    "nyc:coverage": "npx nyc report",
+    "puppeteer:start": "ndb tests/puppeteer.js",
+    "puppeteer:test": "node tests/puppeteer.js"
   },
   "devDependencies": {
     "cypress": "^6.4.0",
