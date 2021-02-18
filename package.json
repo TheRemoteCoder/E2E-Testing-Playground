@@ -3,6 +3,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
+    "start": "npx http-server",
     "cypress:open": "cypress open",
     "cypress:record": "cypress run --record --key 89135ae4-4a5a-4ef8-b83c-a9eb01275ccb",
     "nyc:coverage": "npx nyc report",
@@ -27,5 +28,8 @@
     "prettier-eslint": "^11.0.0",
     "puppeteer": "^7.0.2",
     "puppeteer-to-istanbul": "^1.4.0"
+  },
+  "dependencies": {
+    "http-server": "^0.12.3"
   }
 }

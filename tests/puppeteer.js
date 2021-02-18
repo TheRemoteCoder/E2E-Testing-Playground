@@ -4,7 +4,7 @@ const pti = require('puppeteer-to-istanbul');
 
 (async () => {
 
-  const url    = 'http://127.0.0.1/tests/e2e-testing/src';
+  const url    = 'http://127.0.0.1:8080/';
   const config = {
     headless : false, // Default: true
     slowMo   : 250,
@@ -67,4 +67,3 @@ const pti = require('puppeteer-to-istanbul');
   await browser.close();
 
 })();
-
