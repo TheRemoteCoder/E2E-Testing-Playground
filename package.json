@@ -3,11 +3,15 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "cypress:open": "cypress open",
-    "cypress:record": "cypress run --record --key 89135ae4-4a5a-4ef8-b83c-a9eb01275ccb",
+    "start": "npx http-server",
+    "cy:open": "cypress open",
+    "cy:record": "cypress run --record --key 89135ae4-4a5a-4ef8-b83c-a9eb01275ccb",
     "nyc:coverage": "npx nyc report",
-    "puppeteer:start": "ndb tests/puppeteer.js",
-    "puppeteer:test": "node tests/puppeteer.js"
+    "pp:start": "ndb tests/puppeteer.js",
+    "pp:test": "node tests/puppeteer.js"
+  },
+  "dependencies": {
+    "http-server": "^0.12.3"
   },
   "devDependencies": {
     "cypress": "^6.4.0",
