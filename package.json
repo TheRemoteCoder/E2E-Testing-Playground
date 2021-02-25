@@ -31,5 +31,8 @@
     "prettier-eslint": "^11.0.0",
     "puppeteer": "^7.0.2",
     "puppeteer-to-istanbul": "^1.4.0"
+  },
+  "dependencies": {
+    "http-server": "^0.12.3"
   }
 }

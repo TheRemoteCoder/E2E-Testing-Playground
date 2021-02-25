@@ -3,7 +3,6 @@ const pti = require('puppeteer-to-istanbul');
 
 
 (async () => {
-
   const url    = 'http://localhost:8080';
   const config = {
     headless : false, // Default: true
@@ -67,4 +66,3 @@ const pti = require('puppeteer-to-istanbul');
   await browser.close();
 
 })();
-
