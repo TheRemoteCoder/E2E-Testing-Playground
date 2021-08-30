@@ -1,4 +1,15 @@
 {
-    "projectId": "4o18ut"
+  "projectId": "4o18ut",
+  "baseUrl": "http://localhost:8080",
+  "integrationFolder": "cypress/tests",
+  "viewportHeight": 1000,
+  "viewportWidth": 1280,
+  "retries": {
+    "runMode": 2,
+    "openMode": 1
+  },
+  "env": {
+  },
+  "experimentalStudio": true
 }
 
